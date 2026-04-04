@@ -841,7 +841,151 @@ width:40vw
 }
 
 
-    @media (max-width: 617px){
+
+
+
+/* =========================
+   📱 MOBILE = BASE (déjà dans ton CSS)
+========================= */
+
+
+/* =========================
+   📱 TABLETTE (≥ 768px)
+========================= */
+@media (min-width: 768px){
+
+    #menu-icon{
+        display: none;
+    }
+
+    .navbar{
+        position: static;
+        display: flex;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+
+    .navbar a{
+        display: inline-block;
+        margin: 0 2rem;
+        font-size: 1.6rem;
+    }
+
+    .home{
+        flex-direction: row;
+        text-align: left;
+        padding: 10rem 3% 2rem;
+    }
+
+    .home-content{
+        max-width: 50rem;
+    }
+
+    .about{
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .portfolio-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact form .input-box input{
+        width: 48%;
+    }
+}
+
+
+/* =========================
+   💻 LAPTOP (≥ 1024px)
+========================= */
+@media (min-width: 1024px){
+
+    html{
+        font-size: 60%;
+    }
+
+    .header{
+        padding: 2rem 7%;
+    }
+
+    section{
+        padding: 10rem 7% 2rem;
+    }
+
+    .home{
+        justify-content: space-between;
+    }
+
+    .home-img img{
+        display: block;
+        width: 35%;
+        height: auto;
+    }
+
+    .portfolio-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .service-container{
+        gap: 3rem;
+    }
+}
+
+
+/* =========================
+   🖥 DESKTOP (≥ 1280px)
+========================= */
+@media (min-width: 1280px){
+
+    html{
+        font-size: 62.5%;
+    }
+
+    .home-content h1{
+        font-size: 6rem;
+    }
+
+    .home-content h3{
+        font-size: 3.5rem;
+    }
+
+    .home-content p{
+        font-size: 1.8rem;
+    }
+
+    .portfolio-container{
+        gap: 3rem;
+    }
+}
+
+
+/* =========================
+   🖥 ULTRA LARGE (≥ 1536px)
+========================= */
+@media (min-width: 1536px){
+
+    .home{
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    section{
+        max-width: 1400px;
+        margin: auto;
+    }
+}
+
+    
+
+
+
+
+
+
+
+/*@media (max-width: 617px){
         .portfolio .portfolio-container{
             grid-template-columns: 1fr;
         }
@@ -895,4 +1039,4 @@ width:40vw
             margin-top: 2rem;
         }
     }
-
+*/
