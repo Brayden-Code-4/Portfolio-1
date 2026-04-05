@@ -666,7 +666,6 @@ width:40vw
     .home .profession-container .overlay{
         right: -39.5rem;
     }
-
     .home-img img{
         display: none;
     }
@@ -786,7 +785,7 @@ width:40vw
     }
 
     .home .profession-box .profession:nth-child(4){
-        transform: rotate(120deg) translate(-220px , -335px);
+        transform: rotate(180deg) translate(-220px , -335px);
     }
 
     .home .profession-box .circle{
@@ -801,7 +800,7 @@ width:40vw
         top: 70rem;
         left: 50%;
         right: 0;
-        transform: rotate(90deg) translate(-50% , 50%) scaleX(4);
+        transform: rotate(90deg) translate(-50% , 50%) scaleY(4);
         border-width: 23.9rem;
     }
 
@@ -841,20 +840,7 @@ width:40vw
 }
 
 
-
-
-
-/* =========================
-   📱 MOBILE = BASE (déjà dans ton CSS)
-========================= */
-
-
-/* =========================
-   📱 TABLETTE (≥ 768px)
-========================= */
-@media (min-width: 768px){
-
-    #menu-icon{
+   /* #menu-icon{
         display: none;
     }
 
@@ -894,12 +880,12 @@ width:40vw
     .contact form .input-box input{
         width: 48%;
     }
-}
+}*/
 
 
 /* =========================
    💻 LAPTOP (≥ 1024px)
-========================= */
+========================= *
 @media (min-width: 1024px){
 
     html{
@@ -936,7 +922,7 @@ width:40vw
 
 /* =========================
    🖥 DESKTOP (≥ 1280px)
-========================= */
+========================= *
 @media (min-width: 1280px){
 
     html{
@@ -963,7 +949,7 @@ width:40vw
 
 /* =========================
    🖥 ULTRA LARGE (≥ 1536px)
-========================= */
+========================= *
 @media (min-width: 1536px){
 
     .home{
