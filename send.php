@@ -4,6 +4,14 @@
 
 
 
+
+
+
+
+
+
+
+
 <?php
 session_start();
 
@@ -14,79 +22,75 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-// ✅ Vérifie si formulaire envoyé
+// ENV
+function env($key) {
+    return getenv($key);
+}
+
+// VALIDATION
+function clean($data) {
+    return htmlspecialchars(trim($data));
+}
+
+// CHECK POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.html");
     exit();
 }
 
-// ✅ Anti-spam (honeypot)
+// HONEYPOT
 if (!empty($_POST['website'])) {
     die("🚫 Spam détecté");
 }
 
-// ✅ Anti-spam (temps)
-if (isset($_SESSION['last_send'])) {
-    if (time() - $_SESSION['last_send'] < 10) {
-        die("⏳ Attends quelques secondes avant de renvoyer");
-    }
+// ANTI FLOOD
+if (isset($_SESSION['last_send']) && time() - $_SESSION['last_send'] < 10) {
+    die("⏳ Attends avant de renvoyer");
 }
 
-// ✅ Sécurisation des données
-$nom = htmlspecialchars(trim($_POST['nom']));
-$email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-$subject = htmlspecialchars(trim($_POST['subject']));
-$message = htmlspecialchars(trim($_POST['message']));
+// DATA
+$nom = clean($_POST['nom']);
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$subject = clean($_POST['subject']);
+$message = clean($_POST['message']);
 
-// ✅ Validation simple
-if (empty($nom) || empty($email) || empty($message)) {
-    die("❌ Champs obligatoires manquants");
+// VALIDATION
+if (!$nom || !$email || !$message) {
+    die("❌ Champs manquants");
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("❌ Email invalide");
 }
 
-$mail = new PHPMailer(true);
-
+// ENVOI
 try {
-    // CONFIG SMTP
+    $mail = new PHPMailer(true);
+
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = env('MAIL_HOST');
     $mail->SMTPAuth = true;
-    $mail->Username = 'naboudjat@gmail.com';
-    $mail->Password = 'mojgebeuhoppoprv'; // 🔐 mot de passe d'application
+    $mail->Username = env('MAIL_USER');
+    $mail->Password = env('MAIL_PASS');
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = 587;
+    $mail->Port = env('MAIL_PORT');
 
-    // EXPÉDITEUR
-    $mail->setFrom('naboudjat@gmail.com', 'Portfolio Joseph');
-
-    // Répondre au client
+    $mail->setFrom(env('MAIL_USER'), 'Portfolio Joseph');
+    $mail->addAddress(env('MAIL_TO'));
     $mail->addReplyTo($email, $nom);
 
-    // DESTINATAIRE
-    $mail->addAddress('naboudjat@gmail.com');
-
-    // CONTENU
     $mail->isHTML(false);
-    $mail->Subject = $subject ?: "Nouveau message du portfolio";
+    $mail->Subject = $subject ?: "Nouveau message";
 
-    $mail->Body = "Nom: $nom\n"
-                . "Email: $email\n\n"
-                . "Message:\n$message";
+    $mail->Body = "Nom: $nom\nEmail: $email\n\nMessage:\n$message";
 
-    // ENVOI
     $mail->send();
 
-    // Sauvegarde anti-spam timing
     $_SESSION['last_send'] = time();
 
-    // REDIRECTION (IMPORTANT : pas de echo avant)
     header("Location: success.html");
     exit();
 
 } catch (Exception $e) {
-    echo "❌ Erreur lors de l'envoi : {$mail->ErrorInfo}";
+    echo "❌ Erreur : " . $mail->ErrorInfo;
 }
-?>
