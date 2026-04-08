@@ -80,6 +80,31 @@ ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
 
 
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function(e){
+
+    let nom = document.querySelector("input[name='nom']").value.trim();
+    let email = document.querySelector("input[name='email']").value.trim();
+    let message = document.querySelector("textarea[name='message']").value.trim();
+
+    if(nom === "" || email === "" || message === ""){
+        e.preventDefault();
+        alert("❌ Tous les champs obligatoires doivent être remplis");
+        return;
+    }
+
+    // Validation email simple
+    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!regexEmail.test(email)){
+        e.preventDefault();
+        alert("❌ Email invalide");
+        return;
+    }
+
+});
+
 
 
 /*let menuIcon = document.querySelector('#menu-icon');

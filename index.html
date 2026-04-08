@@ -57,12 +57,12 @@
                     <h3>Ambassadeur FATA</h3>
                 </div>
                 
-                <div class="profession" style="--i:0;">
+                <div class="profession" style="--i:2;">
                     <i class='bx bx-code-alt' ></i>
                     <h3>Web Developper</h3>
                 </div>
 
-                <div class="profession" style="--i:2;">
+                <div class="profession" style="--i:3;">
                     <i class='bx bxs-cloud' ></i>
                     <h3>Passioné par l' IA</h3>
                 </div>
@@ -227,20 +227,29 @@
 
 <section class="contact" id="contact">
     <h2 class="heading">Contact <span>Me</span></h2>
-    <form action="#">
+    <form action="send.php" method="POST">
+
+<!--<input type="text" name="nom" placeholder="Nom" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="number" name="numero" placeholder="Numero">
+<input type="text" name="subject" placeholder="Email Subject">
+<textarea name="message" placeholder="Votre message" required></textarea>-->
+
+        <input type="text" name="website" style="display:none">
+
         <div class="input-box">
-            <input type="text" placeholder="Nom">
+            <input type="text" name="nom" placeholder="Nom" required>
         </div>
         <div class="input-box">
-            <input type="email" placeholder="Email">
+            <input type="email" name="email" placeholder="Email" required>
         </div>
         <div class="input-box">
-            <input type="number" placeholder="Numero">
+            <input type="number" name="numero" placeholder="Numero">
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Email Subject">
+            <input type="text" name="subject" placeholder="Email Subject">
         </div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Votre message"></textarea>
+        <textarea name="message" id="" cols="30" rows="10" placeholder="Votre message" required></textarea>
         <input type="submit" value="Send Message" class="btn">
     </form>
 </section>
