@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b4fbf"/>
+      <stop offset="55%" stop-color="#1d6ef5"/>
+      <stop offset="100%" stop-color="#5aa2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <circle cx="400" cy="360" r="150" fill="rgba(255,255,255,0.22)"/>
+  <ellipse cx="400" cy="720" rx="240" ry="180" fill="rgba(255,255,255,0.18)"/>
+  <text x="400" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="120" font-weight="700" fill="#fff">JN</text>
+</svg>

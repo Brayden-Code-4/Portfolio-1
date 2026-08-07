@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message envoyé — Portfolio</title>
+    <link rel="stylesheet" href="Folio.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 .8rem 2.4rem var(--shadow-color);
+            border-radius: 1.8rem;
+            padding: 5rem 4rem;
+            max-width: 52rem;
+            width: 100%;
+            animation: fadeUp .6s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-card i.main-icon {
+            font-size: 6rem;
+            color: var(--main-color);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .success-card h1 {
+            font-size: 2.8rem;
+            color: var(--text-color);
+            margin-bottom: 1.2rem;
+        }
+
+        .success-card p {
+            font-size: 1.6rem;
+            color: var(--muted-color);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <i class='bx bx-check-circle main-icon'></i>
+        <h1>Message <span>envoyé !</span></h1>
+        <p>Merci pour votre message. Je l'ai bien reçu et je vous répondrai dans les plus brefs délais.</p>
+        <a href="index.html#contact" class="btn">
+            <i class='bx bx-arrow-back'></i> Retour au portfolio
+        </a>
+    </div>
+</body>
+</html>

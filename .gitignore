@@ -1,0 +1,15 @@
+# Fichier de config sensible — ne jamais committer
+config.php
+config-*.php
+!config.example.php
+
+# Doublons OneDrive / sync machine
+*-DESKTOP-*.*
+-DESKTOP-*
+
+# Dépendances (si tu utilises Composer plus tard)
+vendor/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
